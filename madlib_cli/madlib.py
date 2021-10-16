@@ -37,6 +37,17 @@ def parse_template(word):
     return text, word_types
 
 
+def merge(text, word):
+    """
+    merge function that returns a string with the language parts inserted into the template.
+    """
+    merged_text = text.format(*word)
+    with open('assets/result.txt', 'w') as result:
+        result.write(merged_text)
+        print(merged_text)
+    return merged_text
+
+
 if __name__ == "__main__":
 
     file_to_read = read_template("assets/dark_and_stormy_night_template.txt")
@@ -45,3 +56,4 @@ if __name__ == "__main__":
     for i in words:
         user_input = input(f"Enter {i} >> ")
         word_result.append(user_input)
+        madlib_result = merge(text, word_result)
