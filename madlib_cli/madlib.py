@@ -23,9 +23,25 @@ def read_template(path):
             print('\n', file_content, '\n')
             return file_content
     except:
-        raise Exception(f"({path}) not found")
+        raise FileNotFoundError(f"({path}) not found")
+
+
+def parse_template(word):
+    """
+    parse function that Remove words inside of brackets and replace it.
+    """
+    word_types = list(re.findall(r'{(.*?)}', word))
+
+    text = re.sub('{.*?}', '{}', word)
+
+    return text, word_types
 
 
 if __name__ == "__main__":
 
     file_to_read = read_template("assets/dark_and_stormy_night_template.txt")
+    text, words = parse_template(file_to_read)
+    word_result = []
+    for i in words:
+        user_input = input(f"Enter {i} >> ")
+        word_result.append(user_input)
