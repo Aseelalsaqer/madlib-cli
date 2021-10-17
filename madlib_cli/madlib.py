@@ -1,42 +1,59 @@
 
-print("Welcome to MadLib Game")
-print()
+import re
 
 
-def read_template():
-    with open('assets/dark_and_stormy_night_template.txt') as file:
-        content = file.read()
-        return content
+def welcome_msg():
+    """
+Welcoming message
+"""
+    print("Welcome to Madlib Game")
 
 
-content = read_template()
-print(content[0:73])
+welcome_msg()
 
 
-def merge():
-    Adjective = input(">enter Adjective ")
-    Adjective1 = input(">enter Adjective ")
-    A_First_Name = input(">enter A First Name ")
-    Past_Tense_Verb = input(">enter Past Tense Verb ")
-    A_First_Name1 = input(">enter A_First_Name ")
-    Adjective2 = input(">enter Adjective2 ")
-    Adjective3 = input(">Adjective3 ")
-    Plural_Noun = input(">Plural_Noun ")
-    Large_Animal = input(">Large_Animal ")
-    Small_Animal = input(">Small_Animal ")
-    A_Girl_Name = input(">A_Girl_Name ")
-    Adjective4 = input(">Adjective4 ")
-    Plural_Noun1 = input(">Plural_Noun1 ")
-    Adjective5 = input(">Adjective5 ")
-    Plural_Noun2 = input(">Plural_Noun2")
-    Number_from_1_to_50 = input(">Number_1-50")
-    First_Name2 = input(">First_Name2")
-    Number1 = input(">Number1")
-    Plural_Noun3 = input(">Plural_Noun3")
-    Number2 = input(">Number2")
-    Plural_Noun4 = input(">Plural_Noun4")
-    print(content.format(Adjective=Adjective,
-          Adjective1=Adjective1, A_First_Name=A_First_Name, Past_Tense_Verb=Past_Tense_Verb, A_First_Name1=A_First_Name1, Adjective2=Adjective2, Adjective3=Adjective3, Plural_Noun=Plural_Noun, Large_Animal=Large_Animal, Small_Animal=Small_Animal, A_Girl_Name=A_Girl_Name, Adjective4=Adjective4, Plural_Noun1=Plural_Noun1, Adjective5=Adjective5, Plural_Noun2=Plural_Noun2, Number_from_1_to_50=Number_from_1_to_50, First_Name2=First_Name2, Number1=Number1, Plural_Noun3=Plural_Noun3, Number2=Number2, Plural_Noun4=Plural_Noun4,).rstrip('\n'))
+def read_template(path):
+    """
+    read_template function Read a file and return the content
+    """
+
+    try:
+        with open(path) as f:
+            file_content = f.read().strip()
+            print('\n', file_content, '\n')
+            return file_content
+    except:
+        raise FileNotFoundError(f"({path}) not found")
 
 
-merge()
+def parse_template(word):
+    """
+    parse function that Remove words inside of brackets and replace it.
+    """
+    word_types = list(re.findall(r'{(.*?)}', word))
+
+    text = re.sub('{.*?}', '{}', word)
+
+    return text, word_types
+
+
+def merge(text, word):
+    """
+    merge function that returns a string with the language parts inserted into the template.
+    """
+    merged_text = text.format(*word)
+    with open('assets/result.txt', 'w') as result:
+        result.write(merged_text)
+        print(merged_text)
+    return merged_text
+
+
+if __name__ == "__main__":
+
+    file_to_read = read_template("assets/dark_and_stormy_night_template.txt")
+    text, words = parse_template(file_to_read)
+    word_result = []
+    for i in words:
+        user_input = input(f"Enter {i} >> ")
+        word_result.append(user_input)
+        madlib_result = merge(text, word_result)

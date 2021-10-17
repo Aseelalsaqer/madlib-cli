@@ -1,5 +1,5 @@
 Make Me A Video Game!
 
-I the {Adjective} and {Adjective1} {A_First_Name} have {Past_Tense_Verb}{A_First_Name1}'s {Adjective2} sister and plan to steal her {Adjective3} {Plural_Noun}!
+I the {Adjective} and {Adjective} {A First Name} have {Past Tense Verb}{A First Name}'s {Adjective} sister and plan to steal her {Adjective} {Plural Noun}!
 
-What are a {Large_Animal} and backpacking {Small_Animal} to do? Before you can help {A_Girl_Name}, you'll have to collect the {Adjective4} {Plural_Noun1} and {Adjective5} {Plural_Noun2} that open up the {Number_from_1_to_50} worlds connected to A {First_Name2} Lair. There are {Number1} {Plural_Noun3} and {Number2} {Plural_Noun4} in the game, along with hundreds of other goodies for you to find.
+What are a {Large Animal} and backpacking {Small Animal} to do? Before you can help {A Girl's Name}, you'll have to collect the {Adjective} {Plural Noun} and {Adjective} {Plural Noun} that open up the {Number 1-50} worlds connected to A {First Name's} Lair. There are {Number} {Plural Noun} and {Number} {Plural Noun} in the game, along with hundreds of other goodies for you to find.
